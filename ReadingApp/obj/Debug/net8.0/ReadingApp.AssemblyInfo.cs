@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReadingApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ad1022c181e9c342408d0f0ab0549bfb4fe5861")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1819c98f72358da445438bc69e22753d8f71377")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReadingApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReadingApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
