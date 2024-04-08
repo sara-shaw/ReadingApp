@@ -1,10 +1,39 @@
 ﻿
-
+@font-face {
+    font-family: 'Inter';
+    src: url('../../wwwroot/Fonts/Inter-VariableFont_slnt,wght.ttf');
+}
 
 * {
     margin: 0;
     font-family: "Inter", sans-serif;
 }
 
-body {
+.progress-ds {
+    background-color: lightgray;
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    display: flex;
+    height: 10px;
+    width: 100%;
+}
+
+.progress-ds-bar {
+    animation: load 2s normal forwards;
+    border-radius: 100px;
+    background: #427D9D;
+    height: 10px;
+    /*width: var(--width);*/
+    width: 0;
+}
+
+@keyframes load {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: var(--width, 100%);
+    }
 }
