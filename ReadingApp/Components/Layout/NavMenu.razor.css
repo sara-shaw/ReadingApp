@@ -1,0 +1,12 @@
+.navbar-dark {
+    background-color: #001f3f; /* Dark blue color */
+}
+
+.nav-item {
+    font-weight: 600;
+    padding-left: 30px;
+}
+
+.navbar {
+    padding-left: 100px;
+}
