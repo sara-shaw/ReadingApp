@@ -1,13 +1,7 @@
 ﻿<nav class="navbar navbar-expand-md navbar-dark mb-4">
     <div class="container-fluid">
-        <!-- Hamburger menu button for main links (only visible on small screens) -->
-        <button class="navbar-toggler d-md-none @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Main navbar links -->
-        <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
+        <!-- Top navbar -->
+        <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
                     <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -31,9 +25,24 @@
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" style="padding-right: 20px;">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search books, authors, users..." aria-label="Search">
             </form>
+        </div>
+
+        <!-- Right side dropdown menu -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" @onclick="ToggleDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="@DropdownClass">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">My Friends</a></li>
+                    <li><a class="dropdown-item" href="#">Set Challenges</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -41,10 +50,14 @@
 @code {
     private bool collapseNavMenu = true;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
-    private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
 
-    private void ToggleNavMenu()
+    private bool isDropdownOpen = false;
+
+    private string DropdownClass => isDropdownOpen ? "dropdown-menu show" : "dropdown-menu";
+
+    private void ToggleDropdown()
     {
-        collapseNavMenu = !collapseNavMenu;
+        isDropdownOpen = !isDropdownOpen;
+        StateHasChanged(); // Notify Blazor that the UI should be updated
     }
 }
