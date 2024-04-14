@@ -1,0 +1,36 @@
+﻿:root {
+    --button-bg-color: #ebebeb; /* Off-white */
+    --font-color: #2e2e2e; /* Very dark gray */
+    --sec-font-color: #b5b5b5; /* Light gray */
+}
+
+.container {
+    max-width: 900px;
+}
+
+.weeks {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.dayOfWeek {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    color: var(--sec-font-color);
+}
+
+.monthDaysContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.monthDay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

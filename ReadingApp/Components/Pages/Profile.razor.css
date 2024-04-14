@@ -1,0 +1,11 @@
+﻿.profile-picture {
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.calendar {
+    height: 500px;
+    width: 100%;
+    background-color: whitesmoke;
+}

@@ -1,0 +1,64 @@
+﻿@page "/cal"
+<!-- This is a temporary page just so I can debug. We will use this as a component later  :3  -->
+
+<div class="container">
+    <div class="d-flex flex-row">
+        <button class="btn-light" @onclick="() => ChangeMonth(-1)">&lt;</button>
+        <h4>@SelectedMonth</h4>
+        <button class="btn-light" @onclick="() => ChangeMonth(1)">&gt;</button>
+    </div>
+    <div class="weeks">
+        @foreach (var DayOfWeekName in DaysOfWeek)
+        {
+            <div class="dayOfWeek">@DayOfWeekName</div>
+        }
+    </div>
+    <div class="monthDaysContainer">
+        @for(int i = 0; i < FirstDayOfWeek; i++)
+        {
+            <div class="emptyDay"></div>
+        }
+        @foreach(var numDay in NumberDays)
+        {
+            <div class="monthDay">@numDay</div>
+        }
+    </div>
+</div>
+
+@code {
+    public List<string> DaysOfWeek { get; set; } = new() { "SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT" };
+    public List<int> NumberDays { get; set; } = new();
+    public DateTime Today { get; set; } = DateTime.Today;
+    public int SelectedMonth { get; set; } = DateTime.Now.Month;
+    public int FirstDayOfWeek { get; set; }
+    public int DayOfWeekNameCounter { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        NumberDays = GetMonthsNumberDays();
+        CalculateFirstDayofWeek();
+    }
+
+    public List<int> GetMonthsNumberDays()
+    {
+        List<int> numDays = new();
+        int year = DateTime.Now.Year;
+        int daysInMonth = DateTime.DaysInMonth(year, SelectedMonth);
+        for (int day = 1; day <= daysInMonth; day++)
+        {
+            numDays.Add(day);
+        }
+        return numDays;
+    }
+
+    public void CalculateFirstDayofWeek()
+    {
+        FirstDayOfWeek = (int)new DateTime(Today.Year, Today.Month, 1).DayOfWeek;
+        DayOfWeekNameCounter = FirstDayOfWeek;
+    }
+
+    public void ChangeMonth(int upOrDown)
+    {
+        SelectedMonth += upOrDown;
+    }
+}
