@@ -1,9 +1,8 @@
-﻿@page "/cal"
-
+﻿
 @rendermode InteractiveServer
 <!-- This is a temporary page just so I can debug. We will use this as a component later  :3  -->
 
-<div class="container">
+<div class="calendar">
     <div class="d-flex flex-row">
         <button class="btn-light" @onclick="() => ChangeMonth(-1)">&lt;</button>
         <h4>@SelectedMonth</h4>
