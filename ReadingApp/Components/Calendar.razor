@@ -16,7 +16,7 @@
         }
     </div>
     <div class="monthDaysContainer">
-        @for(int i = 0; i < FirstDayOfWeek; i++)
+        @for(int i = 0; i < EmptyDaysCounter; i++)
         {
             <div class="emptyDay"></div>
         }
@@ -55,7 +55,7 @@
 
     public int CalculateFirstDayofWeek()
     {
-        FirstDayOfWeek = (int)new DateTime(Today.Year, Today.Month, 1).DayOfWeek;
+        FirstDayOfWeek = (int)new DateTime(Today.Year, SelectedMonth, 1).DayOfWeek;
         return FirstDayOfWeek;
     }
 
