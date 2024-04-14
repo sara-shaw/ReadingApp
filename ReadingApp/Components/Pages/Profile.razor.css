@@ -1,4 +1,13 @@
-﻿.profile-picture {
+﻿@font-face {
+    font-family: 'Inter';
+    src: url('../../wwwroot/Fonts/Inter-VariableFont_slnt,wght.ttf');
+}
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+.profile-picture {
     border-radius: 100%;
     object-fit: cover;
     object-position: center;

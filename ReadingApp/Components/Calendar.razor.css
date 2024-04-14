@@ -1,11 +1,22 @@
-﻿:root {
+﻿@font-face {
+    font-family: 'Inter';
+    src: url('../../wwwroot/Fonts/Inter-VariableFont_slnt,wght.ttf');
+}
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+:root {
     --button-bg-color: #ebebeb; /* Off-white */
     --font-color: #2e2e2e; /* Very dark gray */
     --sec-font-color: #b5b5b5; /* Light gray */
 }
 
+
 .calendar {
     max-width: 900px;
+    padding: 15px;
 }
 
 .weeks {
@@ -32,5 +43,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-weight: 700;
 }
+
+button {
+    background-color: var(--button-bg-color);
+    color: var(--font-color);
+    padding: 4px 8px;
+    border: solid 1px gray;
+    border-radius: 4px;
+    transition: background-color .3s;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+    button:hover {
+        background-color: black;
+        color: white;
+        border: solid 1px black;
+    }

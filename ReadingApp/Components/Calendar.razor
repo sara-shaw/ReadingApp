@@ -3,11 +3,12 @@
 <!-- This is a temporary page just so I can debug. We will use this as a component later  :3  -->
 
 <div class="calendar">
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row justify-content-center">
         <button class="btn-light" @onclick="() => ChangeMonth(-1)">&lt;</button>
-        <h4>@SelectedMonth</h4>
+        <h4>@SelectedDay.Month, @SelectedDay.Year</h4>
         <button class="btn-light" @onclick="() => ChangeMonth(1)">&gt;</button>
     </div>
+    <button @onclick="SelectToday">Today</button>
     <div class="weeks">
         @foreach (var DayOfWeekName in DaysOfWeek)
         {
@@ -29,8 +30,8 @@
 @code {
     public List<string> DaysOfWeek { get; set; } = new() { "SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT" };
     public List<int> NumberDays { get; set; } = new();
-    public DateTime Today { get; set; } = DateTime.Today;
-    public int SelectedMonth { get; set; } = DateTime.Now.Month;
+    public DateTime SelectedDay { get; set; } = DateTime.Today;
+    public int SelectedMonthString { get; set; }
     public int FirstDayOfWeek { get; set; }
     public int EmptyDaysCounter { get; set; }
 
@@ -43,8 +44,8 @@
     public List<int> GetMonthsNumberDays()
     {
         List<int> numDays = new();
-        int year = DateTime.Now.Year;
-        int daysInMonth = DateTime.DaysInMonth(year, SelectedMonth);
+        int year = SelectedDay.Year;
+        int daysInMonth = DateTime.DaysInMonth(year, SelectedDay.Month);
         for (int day = 1; day <= daysInMonth; day++)
         {
             numDays.Add(day);
@@ -54,14 +55,21 @@
 
     public int CalculateFirstDayofWeek()
     {
-        FirstDayOfWeek = (int)new DateTime(Today.Year, SelectedMonth, 1).DayOfWeek;
+        FirstDayOfWeek = (int)new DateTime(SelectedDay.Year, SelectedDay.Month, 1).DayOfWeek;
         return FirstDayOfWeek;
     }
 
     public void ChangeMonth(int upOrDown)
     {
-        SelectedMonth += upOrDown;
+        SelectedDay = SelectedDay.AddMonths(upOrDown);
 
+        NumberDays = GetMonthsNumberDays();
+        EmptyDaysCounter = CalculateFirstDayofWeek();
+    }
+
+    public void SelectToday()
+    {
+        SelectedDay = DateTime.Today;
         NumberDays = GetMonthsNumberDays();
         EmptyDaysCounter = CalculateFirstDayofWeek();
     }
