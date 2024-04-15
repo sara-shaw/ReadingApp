@@ -5,10 +5,10 @@
 <div class="calendar">
     <div class="d-flex flex-row justify-content-center">
         <button class="btn-light" @onclick="() => ChangeMonth(-1)">&lt;</button>
-        <h4>@SelectedDay.Month, @SelectedDay.Year</h4>
+        <h4 class="monthAndDayNames">@SelectedDay.ToString("MMMM"), @SelectedDay.Year</h4>
         <button class="btn-light" @onclick="() => ChangeMonth(1)">&gt;</button>
     </div>
-    <button @onclick="SelectToday">Today</button>
+    <center><button @onclick="SelectToday">Today</button></center>
     <div class="weeks">
         @foreach (var DayOfWeekName in DaysOfWeek)
         {
@@ -22,7 +22,9 @@
         }
         @foreach(var numDay in NumberDays)
         {
-            <div class="monthDay">@numDay</div>
+        
+                <div class="monthDay today">@numDay</div>
+               
         }
     </div>
 </div>

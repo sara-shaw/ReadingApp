@@ -22,8 +22,6 @@
 .weeks {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 20px;
-    gap: 80px;
 }
 
 .dayOfWeek {
@@ -31,13 +29,11 @@
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid lightgray;
-    color: var(--sec-font-color);
 }
 
 .monthDaysContainer {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
 }
 
 .monthDay {
@@ -45,6 +41,19 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
+    height: 80px;
+/*    border: solid 1px gray;
+*/
+
+    transition: background-color .2s;
+}
+
+.monthDay .today {
+    background-color: pink;
+}
+
+.monthDay:hover {
+    background-color: white;
 }
 
 button {
@@ -63,3 +72,4 @@ button {
         color: white;
         border: solid 1px black;
     }
+
