@@ -6,22 +6,22 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
                     <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                        Home
                     </NavLink>
                 </li>
                 <li class="nav-item">
                     <NavLink class="nav-link" href="MyBooks">
-                        <span class="oi oi-plus" aria-hidden="true"></span> My Books
+                        My Books
                     </NavLink>
                 </li>
                 <li class="nav-item">
                     <NavLink class="nav-link" href="Stats">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Stats
+                        Stats
                     </NavLink>
                 </li>
                 <li class="nav-item">
                     <NavLink class="nav-link" href="Recommendations">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Recommendations
+                        Recommendations
                     </NavLink>
                 </li>
             </ul>
@@ -36,29 +36,25 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" @onclick="ToggleDropdown">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="@DropdownClass">
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="Profile">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">My Friends</a></li>
-                    <li><a class="dropdown-item" href="#">Set Challenges</a></li>
-                    <li><a class="dropdown-item" href="Settings">Settings</a></li>
-                </ul>
-            </div>
+            <ul class="@DropdownClass dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 0; left: auto;">
+                <li><a class="dropdown-item" href="Profile">Profile</a></li>
+                <li><a class="dropdown-item" href="#">My Friends</a></li>
+                <li><a class="dropdown-item" href="#">Set Challenges</a></li>
+                <li><a class="dropdown-item" href="Settings">Settings</a></li>
+            </ul>
         </div>
     </div>
 </nav>
 
 @code {
     private bool collapseNavMenu = true;
-    private string? NavBarCssClass => collapseNavMenu ? null : "show";
-
     private bool isDropdownOpen = false;
 
+    private string NavBarCssClass => collapseNavMenu ? "" : "show";
     private string DropdownClass => isDropdownOpen ? "dropdown-menu show" : "dropdown-menu";
 
     private void ToggleDropdown()
     {
         isDropdownOpen = !isDropdownOpen;
-        StateHasChanged(); // Notify Blazor that the UI should be updated
     }
 }
